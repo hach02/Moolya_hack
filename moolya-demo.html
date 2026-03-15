@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moolya — Know Before You Apply</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f7f4ef;
+    --cream: #ede9e2;
+    --accent: #c8501a;
+    --accent-light: #f5ede8;
+    --accent-mid: #e87a50;
+    --green: #2d6a4f;
+    --green-light: #e8f4ee;
+    --muted: #7a7570;
+    --border: #d9d4cc;
+    --white: #ffffff;
+    --shadow: 0 2px 20px rgba(15,14,13,0.08);
+    --shadow-lg: 0 8px 40px rgba(15,14,13,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-tag {
+    font-size: 12px;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 64px 40px 48px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 48px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+
+  /* STEP PROGRESS */
+  .steps-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 40px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .step-item:not(:last-child)::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin: 0 4px;
+    transition: background 0.3s;
+  }
+
+  .step-item.done:not(:last-child)::after { background: var(--accent); }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--white);
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+
+  .step-item.active .step-num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  .step-item.done .step-num {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: white;
+  }
+
+  .step-label {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .step-item.active .step-label { color: var(--accent); }
+  .step-item.done .step-label { color: var(--ink); }
+
+  /* MAIN CARD */
+  .main-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 680px;
+    margin: 0 auto 60px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-section { display: none; }
+  .card-section.active { display: block; }
+
+  .section-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 28px;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  /* FORM ELEMENTS */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  input, select, textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    padding: 11px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--paper);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input:focus, select:focus {
+    border-color: var(--accent);
+    background: var(--white);
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7570' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  /* RANGE SLIDER */
+  .slider-wrap { margin-bottom: 8px; }
+  .slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--cream);
+    border-radius: 2px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 4px var(--accent-light);
+  }
+
+  .slider-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    font-family: 'Instrument Serif', serif;
+    margin-bottom: 8px;
+  }
+
+  /* TOGGLE GROUP */
+  .toggle-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .toggle-btn {
+    padding: 8px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .toggle-btn.selected { background: var(--accent); border-color: var(--accent); color: white; }
+
+  /* PRIMARY BUTTON */
+  .btn-primary {
+    width: 100%;
+    padding: 15px 24px;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(200,80,26,0.3);
+  }
+
+  .btn-secondary {
+    padding: 11px 24px;
+    background: transparent;
+    color: var(--muted);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* RESULTS */
+  .result-hero {
+    background: linear-gradient(135deg, #0f0e0d 0%, #2a2520 100%);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(200,80,26,0.3) 0%, transparent 70%);
+  }
+
+  .result-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+  }
+
+  .result-amount {
+    font-family: 'Instrument Serif', serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .result-range {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+  }
+
+  .result-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .breakdown-item {
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 12px;
+  }
+
+  .breakdown-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .breakdown-val {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .breakdown-val.loss { color: #ff8a70; }
+  .breakdown-val.gain { color: #6fcf97; }
+
+  /* LENDER CARDS */
+  .lender-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+
+  .lender-card {
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    background: var(--white);
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lender-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+
+  .lender-card.best {
+    border-color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .lender-card.best::before {
+    content: 'Best match';
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-bottom-left-radius: 8px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .lender-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .lender-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+  .lender-meta { font-size: 12px; color: var(--muted); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+  .meta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .pill-green { background: var(--green-light); color: var(--green); }
+  .pill-orange { background: var(--accent-light); color: var(--accent); }
+  .pill-gray { background: var(--cream); color: var(--muted); }
+
+  .lender-amount { text-align: right; }
+  .lender-amt-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .lender-amt-label { font-size: 11px; color: var(--muted); }
+
+  /* DOC CHECKLIST */
+  .doc-section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin: 20px 0 10px;
+  }
+
+  .doc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+
+  .doc-item.ok { background: var(--green-light); }
+  .doc-item.warn { background: #fff8e1; }
+  .doc-item.missing { background: #fff0ec; }
+
+  .doc-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .doc-icon.ok { background: var(--green); color: white; }
+  .doc-icon.warn { background: #f0a500; color: white; }
+  .doc-icon.missing { background: var(--accent); color: white; }
+
+  .doc-text { flex: 1; }
+  .doc-name { font-weight: 500; margin-bottom: 2px; }
+  .doc-note { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* AA BANNER */
+  .aa-banner {
+    background: linear-gradient(135deg, #1a2f5e 0%, #0d1f3c 100%);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+    color: white;
+  }
+
+  .aa-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 24px;
+  }
+
+  .aa-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .aa-text p { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
+  .aa-btn {
+    margin-left: auto;
+    padding: 9px 18px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+
+  .aa-btn:hover { background: rgba(255,255,255,0.25); }
+
+  /* WARNING BANNER */
+  .warning-banner {
+    background: #fff8e1;
+    border: 1px solid #ffd54f;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #6d4c00;
+    line-height: 1.5;
+  }
+
+  .warning-icon { flex-shrink: 0; font-size: 16px; }
+
+  /* BUTTON ROW */
+  .btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  /* LOADING */
+  .loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .loading-overlay.active { display: flex; }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--cream);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .loading-sub {
+    font-size: 13px;
+    color: var(--border);
+    margin-top: -8px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-section.active { animation: fadeUp 0.4s ease; }
+
+  .result-amount { animation: countUp 1s ease; }
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    text-align: center;
+    padding: 32px;
+    background: var(--cream);
+    border-radius: 16px;
+    margin-top: 32px;
+  }
+
+  .final-cta h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .final-cta p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary {
+    padding: 13px 28px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .cta-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,80,26,0.35); }
+
+  /* FOOTER NOTE */
+  .footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 0 40px 40px;
+    opacity: 0.7;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 40px 20px 32px; }
+    .hero h1 { font-size: 34px; }
+    .main-card { padding: 24px 20px; margin: 0 16px 40px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .result-breakdown { grid-template-columns: 1fr 1fr; }
+    .lender-card { grid-template-columns: auto 1fr; }
+    .lender-amount { display: none; }
+    .steps-wrap { gap: 0; padding: 0 16px; }
+    .step-label { display: none; }
+    .aa-banner { flex-wrap: wrap; }
+    .aa-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loadingText">Analysing your property...</div>
+  <div class="loading-sub" id="loadingSub">Checking circle rates & lender policies</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Moolya<span>.</span></div>
+  <div class="nav-tag">Demo — EF Hackathon 2025</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Loan Against Property · India</div>
+  <h1>Know what you'll get<br><em>before</em> you apply</h1>
+  <p>Stop wasting months on the wrong bank. Get a realistic loan estimate, matched lenders, and a document checklist — in 3 minutes.</p>
+</div>
+
+<!-- STEP INDICATOR -->
+<div class="steps-wrap" id="stepsWrap">
+  <div class="step-item active" id="stepItem1">
+    <div class="step-num">1</div>
+    <div class="step-label">Property details</div>
+  </div>
+  <div class="step-item" id="stepItem2">
+    <div class="step-num">2</div>
+    <div class="step-label">Borrower profile</div>
+  </div>
+  <div class="step-item" id="stepItem3">
+    <div class="step-num">3</div>
+    <div class="step-label">Your results</div>
+  </div>
+</div>
+
+<!-- MAIN CARD -->
+<div class="main-card">
+
+  <!-- STEP 1 -->
+  <div class="card-section active" id="step1">
+    <div class="section-title">Tell us about your property</div>
+    <div class="section-sub">We'll calculate what banks will actually value it at — not the market rate, but what appears on the sanction letter.</div>
+
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Property type</label>
+        <div class="toggle-group" id="propTypeGroup">
+          <button class="toggle-btn" onclick="selectToggle(this,'propType','residential')">Residential</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'propType','commercial')">Commercial</button>
+          <button class="toggle-btn selected" onclick="selectToggle(this,'propType','vacant_land')">Vacant Land / Plot</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'propType','industrial')">Industrial</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>State</label>
+        <select id="state" onchange="updateCity()">
+          <option value="delhi">Delhi</option>
+          <option value="haryana" selected>Haryana</option>
+          <option value="up">Uttar Pradesh</option>
+          <option value="maharashtra">Maharashtra</option>
+          <option value="karnataka">Karnataka</option>
+          <option value="gujarat">Gujarat</option>
+          <option value="rajasthan">Rajasthan</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>City / District</label>
+        <select id="city">
+          <option value="faridabad" selected>Faridabad</option>
+          <option value="gurugram">Gurugram</option>
+          <option value="noida">Noida</option>
+          <option value="ghaziabad">Ghaziabad</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label>Your estimate of market value</label>
+        <div class="slider-value" id="marketValDisplay">₹20 crore</div>
+        <div class="slider-wrap">
+          <input type="range" id="marketVal" min="25" max="200" value="200" step="5"
+            oninput="updateSlider(this.value, 'marketValDisplay', 'crore')">
+          <div class="slider-labels"><span>₹25L</span><span>₹1 Cr</span><span>₹5 Cr</span><span>₹20 Cr+</span></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Property size</label>
+        <select id="propSize">
+          <option value="small">Under 1000 sq ft</option>
+          <option value="medium">1000–5000 sq ft</option>
+          <option value="large" selected>5000 sq ft – 2 acres</option>
+          <option value="xlarge">2 acres+</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Title status</label>
+        <select id="titleStatus">
+          <option value="clear" selected>Clear freehold title</option>
+          <option value="leasehold">Leasehold</option>
+          <option value="disputed">Under dispute / litigation</option>
+          <option value="agricultural">Agricultural land</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="goToStep2()">Continue →</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="card-section" id="step2">
+    <div class="section-title">Your borrower profile</div>
+    <div class="section-sub">This determines which lenders you can actually approach — and what rate you'll qualify for.</div>
+
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Loan purpose</label>
+        <div class="toggle-group" id="purposeGroup">
+          <button class="toggle-btn selected" onclick="selectToggle(this,'purpose','business')">Business expansion</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'purpose','working_capital')">Working capital</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'purpose','personal')">Personal / investment</button>
+          <button class="toggle-btn" onclick="selectToggle(this,'purpose','construction')">Construction</button>
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Loan amount needed</label>
+        <div class="slider-value" id="loanAmtDisplay">₹5 crore</div>
+        <div class="slider-wrap">
+          <input type="range" id="loanAmt" min="5" max="100" value="50" step="5"
+            oninput="updateSlider(this.value, 'loanAmtDisplay', 'lakhs')">
+          <div class="slider-labels"><span>₹25L</span><span>₹50L</span><span>₹2Cr</span><span>₹5Cr+</span></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Borrower type</label>
+        <select id="borrowerType">
+          <option value="msme" selected>MSME / Business owner</option>
+          <option value="self_employed">Self-employed professional</option>
+          <option value="salaried">Salaried individual</option>
+          <option value="company">Pvt Ltd / LLP</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>CIBIL score (approx)</label>
+        <select id="cibil">
+          <option value="750plus">750+ (Excellent)</option>
+          <option value="700-750" selected>700–750 (Good)</option>
+          <option value="650-700">650–700 (Fair)</option>
+          <option value="below650">Below 650</option>
+          <option value="unknown">Not sure</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Annual business turnover</label>
+        <select id="turnover">
+          <option value="under1cr">Under ₹1 Cr</option>
+          <option value="1-5cr" selected>₹1–5 Cr</option>
+          <option value="5-25cr">₹5–25 Cr</option>
+          <option value="above25cr">Above ₹25 Cr</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Existing loan obligations</label>
+        <select id="existingLoans">
+          <option value="none">None</option>
+          <option value="low" selected>Low (under 30% income)</option>
+          <option value="medium">Medium (30–50% income)</option>
+          <option value="high">High (above 50%)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="goToStep(1)">← Back</button>
+      <button class="btn-primary" onclick="runAnalysis()" style="flex:1">Analyse my loan →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 — RESULTS -->
+  <div class="card-section" id="step3">
+    <div class="section-title">Your loan analysis</div>
+    <div class="section-sub" id="resultSub">Based on your 1.5 acre vacant plot in Faridabad, Haryana</div>
+
+    <!-- WARNING if vacant land -->
+    <div class="warning-banner" id="vacantWarning">
+      <div class="warning-icon">⚠</div>
+      <div><strong>Vacant land alert:</strong> PSU banks (SBI, PNB, BoB) typically decline vacant plots as collateral. We've automatically filtered your lender matches to NBFCs that accept this property type.</div>
+    </div>
+
+    <!-- RESULT HERO -->
+    <div class="result-hero">
+      <div class="result-label">Realistic loan you can expect</div>
+      <div class="result-amount" id="resultAmount">₹8.4 Cr</div>
+      <div class="result-range" id="resultRange">Range: ₹7.2 Cr – ₹10.1 Cr depending on lender</div>
+      <div class="result-breakdown">
+        <div class="breakdown-item">
+          <div class="breakdown-label">Your market value</div>
+          <div class="breakdown-val" id="mktVal">₹20 Cr</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">Bank valuation</div>
+          <div class="breakdown-val loss" id="bankVal">₹13 Cr</div>
+        </div>
+        <div class="breakdown-item">
+          <div class="breakdown-label">After LTV (65%)</div>
+          <div class="breakdown-val gain" id="ltvVal">₹8.4 Cr</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LENDER MATCHES -->
+    <div style="font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Matched lenders</div>
+
+    <div class="lender-list">
+      <div class="lender-card best" id="lender1">
+        <div class="lender-logo" style="background:#fff0ec; color:#c8501a;">PF</div>
+        <div>
+          <div class="lender-name">Piramal Finance</div>
+          <div class="lender-meta">
+            <span class="meta-pill pill-green">✓ Vacant land accepted</span>
+            <span class="meta-pill pill-orange">15–20 working days</span>
+            <span class="meta-pill pill-gray">10.50%</span>
+          </div>
+        </div>
+        <div class="lender-amount">
+          <div class="lender-amt-num" id="lAmt1">₹10.1 Cr</div>
+          <div class="lender-amt-label">75% LTV</div>
+        </div>
+      </div>
+
+      <div class="lender-card" id="lender2">
+        <div class="lender-logo" style="background:#e8f4ee; color:#2d6a4f;">AR</div>
+        <div>
+          <div class="lender-name">Arka Fincap</div>
+          <div class="lender-meta">
+            <span class="meta-pill pill-green">✓ MSME specialist</span>
+            <span class="meta-pill pill-orange">10–15 working days</span>
+            <span class="meta-pill pill-gray">11.25%</span>
+          </div>
+        </div>
+        <div class="lender-amount">
+          <div class="lender-amt-num" id="lAmt2">₹9.1 Cr</div>
+          <div class="lender-amt-label">70% LTV</div>
+        </div>
+      </div>
+
+      <div class="lender-card" id="lender3">
+        <div class="lender-logo" style="background:#edeaff; color:#5b52c8;">EW</div>
+        <div>
+          <div class="lender-name">Edelweiss Finance</div>
+          <div class="lender-meta">
+            <span class="meta-pill pill-green">✓ Tier 2 cities</span>
+            <span class="meta-pill pill-orange">20–25 working days</span>
+            <span class="meta-pill pill-gray">10.75%</span>
+          </div>
+        </div>
+        <div class="lender-amount">
+          <div class="lender-amt-num" id="lAmt3">₹7.8 Cr</div>
+          <div class="lender-amt-label">60% LTV</div>
+        </div>
+      </div>
+
+      <div class="lender-card" style="opacity:0.5;">
+        <div class="lender-logo" style="background:#f4f4f4; color:#aaa;">SBI</div>
+        <div>
+          <div class="lender-name" style="color:var(--muted)">State Bank of India</div>
+          <div class="lender-meta">
+            <span class="meta-pill pill-gray">✗ Vacant land not accepted</span>
+            <span class="meta-pill pill-gray">✗ Business use restricted on LAP</span>
+          </div>
+        </div>
+        <div class="lender-amount">
+          <div class="lender-amt-num" style="color:var(--muted)">—</div>
+          <div class="lender-amt-label">Not eligible</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- DOCUMENT CHECKLIST -->
+    <div style="font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Document readiness</div>
+
+    <div class="doc-section-title">Property documents</div>
+    <div class="doc-item ok">
+      <div class="doc-icon ok">✓</div>
+      <div class="doc-text">
+        <div class="doc-name">Sale deed / title deed</div>
+        <div class="doc-note">Original + certified copy required. Ensure chain of title goes back minimum 13 years.</div>
+      </div>
+    </div>
+    <div class="doc-item warn">
+      <div class="doc-icon warn">!</div>
+      <div class="doc-text">
+        <div class="doc-name">Encumbrance certificate (EC)</div>
+        <div class="doc-note">Get EC for last 30 years from sub-registrar office. For vacant land in Haryana, use HRERA portal. Banks will flag any prior mortgage or lien.</div>
+      </div>
+    </div>
+    <div class="doc-item missing">
+      <div class="doc-icon missing">✗</div>
+      <div class="doc-text">
+        <div class="doc-name">Land use / zoning certificate</div>
+        <div class="doc-note">Critical for vacant land. Banks need confirmation it is non-agricultural (commercial/industrial zone). Get from DTCP Haryana. Missing this is the #1 delay cause for Faridabad plots.</div>
+      </div>
+    </div>
+    <div class="doc-item warn">
+      <div class="doc-icon warn">!</div>
+      <div class="doc-text">
+        <div class="doc-name">Property tax receipts (last 3 years)</div>
+        <div class="doc-note">Arrears will cause rejection. Clear any outstanding dues before applying.</div>
+      </div>
+    </div>
+
+    <div class="doc-section-title">Business / financial documents</div>
+    <div class="doc-item ok">
+      <div class="doc-icon ok">✓</div>
+      <div class="doc-text">
+        <div class="doc-name">GST returns (last 2 years)</div>
+        <div class="doc-note">GSTR-3B sufficient. Arka and Piramal both accept GST as primary income proof for MSME borrowers.</div>
+      </div>
+    </div>
+    <div class="doc-item warn">
+      <div class="doc-icon warn">!</div>
+      <div class="doc-text">
+        <div class="doc-name">ITR with computation (last 2 years)</div>
+        <div class="doc-note">Ensure filed and acknowledged. Business income should show consistent trend. Large drop in Year 2 vs Year 1 will trigger a query.</div>
+      </div>
+    </div>
+    <div class="doc-item missing">
+      <div class="doc-icon missing">✗</div>
+      <div class="doc-text">
+        <div class="doc-name">Business proposal / end-use letter</div>
+        <div class="doc-note">Required by all lenders for business purpose LAP. Must detail: business nature, how funds will be deployed, expected revenue impact, repayment source. This goes to credit committee — weak proposals add 3–4 weeks.</div>
+      </div>
+    </div>
+
+    <!-- AA BANNER -->
+    <div class="aa-banner">
+      <div class="aa-icon">🔗</div>
+      <div class="aa-text">
+        <h4>Skip the document chase with Account Aggregator</h4>
+        <p>Connect your bank account via RBI's AA framework. We pull 12 months of statements, GST data, and ITR instantly — with your consent. Banks receive clean, verified data directly.</p>
+      </div>
+      <button class="aa-btn" onclick="showAADemo()">Connect AA →</button>
+    </div>
+
+    <div class="final-cta">
+      <h3>Ready to apply the right way?</h3>
+      <p>We'll connect you with your top-matched lender, prepare your complete document file, and track your application — for a flat fee of ₹9,999.</p>
+      <div class="cta-row">
+        <button class="cta-primary">Start application with Piramal Finance</button>
+        <button class="btn-secondary" onclick="goToStep(1)" style="padding: 11px 20px;">← Start over</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-note">Moolya · Built at EF Hackathon 2025 · All valuations are estimates based on circle rates, historical haircut data, and lender policies. Not financial advice.</div>
+
+<script>
+  let state = {
+    propType: 'vacant_land',
+    purpose: 'business',
+    currentStep: 1
+  };
+
+  function selectToggle(btn, key, val) {
+    const group = btn.parentElement;
+    group.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    state[key] = val;
+  }
+
+  function updateSlider(val, displayId, unit) {
+    const el = document.getElementById(displayId);
+    if (unit === 'crore') {
+      const cr = val / 10;
+      el.textContent = cr < 1 ? `₹${val * 10} lakh` : `₹${cr.toFixed(cr < 10 ? 1 : 0)} crore`;
+    } else {
+      const cr = val / 10;
+      el.textContent = cr < 1 ? `₹${val} lakh` : `₹${cr.toFixed(1)} crore`;
+    }
+  }
+
+  function updateCity() {
+    const state = document.getElementById('state').value;
+    const cityEl = document.getElementById('city');
+    const cities = {
+      delhi: ['New Delhi','South Delhi','Dwarka','Rohini'],
+      haryana: ['Faridabad','Gurugram','Panipat','Ambala'],
+      up: ['Noida','Lucknow','Agra','Kanpur'],
+      maharashtra: ['Mumbai','Pune','Nagpur','Nashik'],
+      karnataka: ['Bengaluru','Mysuru','Hubli','Mangaluru'],
+      gujarat: ['Ahmedabad','Surat','Vadodara','Rajkot'],
+      rajasthan: ['Jaipur','Jodhpur','Kota','Udaipur']
+    };
+    cityEl.innerHTML = (cities[state] || ['Select city']).map(c =>
+      `<option value="${c.toLowerCase().replace(' ','_')}">${c}</option>`).join('');
+  }
+
+  function goToStep(n) {
+    document.querySelectorAll('.card-section').forEach((s,i) => {
+      s.classList.toggle('active', i === n-1);
+    });
+    ['stepItem1','stepItem2','stepItem3'].forEach((id, i) => {
+      const el = document.getElementById(id);
+      el.classList.remove('active','done');
+      if (i+1 === n) el.classList.add('active');
+      else if (i+1 < n) el.classList.add('done');
+    });
+    state.currentStep = n;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function goToStep2() {
+    goToStep(2);
+  }
+
+  function runAnalysis() {
+    const loading = document.getElementById('loading');
+    const texts = [
+      ['Fetching circle rates...', 'Haryana stamp duty portal · DTCP'],
+      ['Applying forced sale discount...', 'Vacant land in Tier 2: 32–38% haircut'],
+      ['Matching lender policies...', 'Checking 14 lender databases'],
+      ['Generating document checklist...', 'Based on Piramal Finance requirements']
+    ];
+    let i = 0;
+    loading.classList.add('active');
+
+    const interval = setInterval(() => {
+      if (i < texts.length) {
+        document.getElementById('loadingText').textContent = texts[i][0];
+        document.getElementById('loadingSub').textContent = texts[i][1];
+        i++;
+      }
+    }, 600);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      loading.classList.remove('active');
+      computeResults();
+      goToStep(3);
+    }, 2800);
+  }
+
+  function computeResults() {
+    const marketRaw = parseInt(document.getElementById('marketVal').value);
+    const marketCr = marketRaw / 10;
+    const propType = state.propType;
+    const titleStatus = document.getElementById('titleStatus').value;
+
+    // Haircut logic
+    let haircut = 0.33;
+    if (propType === 'residential') haircut = 0.18;
+    else if (propType === 'commercial') haircut = 0.22;
+    else if (propType === 'industrial') haircut = 0.28;
+    else if (propType === 'vacant_land') haircut = 0.35;
+    if (titleStatus === 'leasehold') haircut += 0.05;
+    if (titleStatus === 'disputed') haircut += 0.15;
+
+    const bankValCr = marketCr * (1 - haircut);
+    const ltvPiramal = 0.75, ltvArka = 0.70, ltvEdel = 0.60;
+    const a1 = bankValCr * ltvPiramal;
+    const a2 = bankValCr * ltvArka;
+    const a3 = bankValCr * ltvEdel;
+    const mid = a2;
+
+    document.getElementById('resultAmount').textContent = `₹${mid.toFixed(1)} Cr`;
+    document.getElementById('resultRange').textContent = `Range: ₹${a3.toFixed(1)} Cr – ₹${a1.toFixed(1)} Cr depending on lender`;
+    document.getElementById('mktVal').textContent = `₹${marketCr.toFixed(1)} Cr`;
+    document.getElementById('bankVal').textContent = `₹${bankValCr.toFixed(1)} Cr`;
+    document.getElementById('ltvVal').textContent = `₹${mid.toFixed(1)} Cr`;
+    document.getElementById('lAmt1').textContent = `₹${a1.toFixed(1)} Cr`;
+    document.getElementById('lAmt2').textContent = `₹${a2.toFixed(1)} Cr`;
+    document.getElementById('lAmt3').textContent = `₹${a3.toFixed(1)} Cr`;
+    document.getElementById('resultSub').textContent =
+      `Based on your ${propType.replace('_',' ')} in ${document.getElementById('city').value.replace('_',' ')}, ${document.getElementById('state').value}`;
+
+    document.getElementById('vacantWarning').style.display = propType === 'vacant_land' ? 'flex' : 'none';
+  }
+
+  function showAADemo() {
+    alert('Account Aggregator integration demo:\n\n1. User grants consent via Finvu / Anumati app\n2. Moolya receives structured JSON: bank statements, GST, ITR\n3. DSCR, income, and cash-flow automatically computed\n4. Clean verified data package sent to lender\n\nDisbursal time reduced from 3 months → ~15 working days');
+  }
+
+  // Init slider display
+  updateSlider(200, 'marketValDisplay', 'crore');
+  updateSlider(50, 'loanAmtDisplay', 'lakhs');
+</script>
+</body>
+</html>
